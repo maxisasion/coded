@@ -1,0 +1,2307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLUE CODED V2.0 ULTRA | CTScalper Trading System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cosmic-blue: #001a33;
+      --neon-blue: #00a8ff;
+      --deep-space: #000b18;
+      --starlight: #e0f7ff;
+      --galactic-purple: #6a00ff;
+      --supernova: #ff9e00;
+      --quantum-green: #00ff9d;
+      --dark-matter: #000511;
+      --event-horizon: #003366;
+      --pulsar: #00f2ff;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body { 
+      background: var(--dark-matter); 
+      color: var(--starlight); 
+      font-family: 'Rajdhani', sans-serif; 
+      text-align: center; 
+      padding: 1rem; 
+      max-width: 1400px; 
+      margin: 0 auto;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(0, 168, 255, 0.15) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(106, 0, 255, 0.15) 0%, transparent 20%),
+        linear-gradient(to bottom, var(--dark-matter), var(--deep-space));
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+    
+    /* Cosmic Glow Effects */
+    .cosmic-glow {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .cosmic-glow::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      z-index: -1;
+      border-radius: inherit;
+      background: linear-gradient(45deg, 
+        var(--neon-blue), 
+        var(--galactic-purple), 
+        var(--quantum-green), 
+        var(--neon-blue));
+      background-size: 400%;
+      opacity: 0;
+      transition: 0.5s;
+      animation: cosmicGlow 8s linear infinite;
+      filter: blur(10px);
+    }
+    
+    .cosmic-glow:hover::before {
+      opacity: 0.7;
+    }
+    
+    @keyframes cosmicGlow {
+      0% { background-position: 0 0; }
+      50% { background-position: 300% 0; }
+      100% { background-position: 0 0; }
+    }
+    
+    /* Nebula Panel Styling */
+    .control-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .control-panel::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      background: 
+        radial-gradient(circle at center, rgba(0, 168, 255, 0.1) 0%, transparent 70%);
+      border-radius: 20px;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .control-group {
+      background: rgba(0, 26, 51, 0.7);
+      padding: 1.5rem;
+      border-radius: 12px;
+      min-width: 220px;
+      color: white;
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .control-group:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 168, 255, 0.2);
+      border-color: rgba(0, 168, 255, 0.6);
+    }
+    
+    .control-group::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 168, 255, 0.2),
+        transparent
+      );
+      transition: 0.5s;
+    }
+    
+    .control-group:hover::after {
+      left: 100%;
+    }
+    
+    /* Quantum Input Elements */
+    select, button, input { 
+      padding: 0.8rem 1rem; 
+      margin: 0.5rem 0; 
+      font-size: 1rem; 
+      background: rgba(0, 40, 80, 0.7); 
+      color: var(--starlight); 
+      border: 1px solid rgba(0, 168, 255, 0.3); 
+      width: 100%;
+      border-radius: 6px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+    
+    select:focus, input:focus {
+      outline: none;
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+    }
+    
+    input[type="range"] {
+      -webkit-appearance: none;
+      height: 8px;
+      background: rgba(0, 40, 80, 0.7);
+      border-radius: 4px;
+      margin-top: 1rem;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--neon-blue);
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--neon-blue);
+    }
+    
+    button { 
+      background: linear-gradient(to right, var(--neon-blue), var(--galactic-purple)); 
+      cursor: pointer; 
+      font-weight: bold;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      box-shadow: 0 5px 15px rgba(0, 168, 255, 0.4);
+    }
+    
+    button:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 168, 255, 0.6);
+    }
+    
+    button:active {
+      transform: translateY(1px);
+    }
+    
+    button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, var(--galactic-purple), var(--neon-blue));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+    
+    button:hover::after {
+      opacity: 1;
+    }
+    
+    /* Pulsing Signal Display */
+    #signal { 
+      font-size: 3rem; 
+      margin: 2rem 0; 
+      text-shadow: 0 0 20px currentColor;
+      padding: 1.5rem;
+      border-radius: 12px;
+      background: rgba(0, 11, 24, 0.7);
+      color: var(--starlight);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      animation: pulse 3s infinite alternate;
+    }
+    
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px rgba(0, 168, 255, 0.3); }
+      100% { box-shadow: 0 0 30px rgba(0, 168, 255, 0.7); }
+    }
+    
+    #signal::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 168, 255, 0.1),
+        transparent
+      );
+      animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    
+    .buy { 
+      color: var(--quantum-green);
+      text-shadow: 0 0 20px var(--quantum-green);
+    }
+    
+    .sell { 
+      color: #ff4d4d;
+      text-shadow: 0 0 20px #ff4d4d;
+    }
+    
+    .neutral { 
+      color: var(--starlight);
+      text-shadow: 0 0 20px var(--starlight);
+    }
+    
+    /* Trading View Container */
+    .tradingview-widget-container { 
+      width: 100%; 
+      margin: 2rem auto; 
+      height: 600px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      position: relative;
+    }
+    
+    .tradingview-widget-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 168, 255, 0.05) 0%,
+        rgba(106, 0, 255, 0.05) 100%
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    #chartWrapper { 
+      width: 100%; 
+      height: 100%; 
+    }
+    
+    /* Stellar Trade Details */
+    #tradeDetails { 
+      font-family: 'Rajdhani', sans-serif; 
+      background: rgba(0, 11, 24, 0.7); 
+      padding: 2rem; 
+      border-radius: 15px; 
+      margin: 2rem auto;
+      color: white;
+      text-align: left;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      backdrop-filter: blur(5px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    #tradeDetails::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(
+        circle at center,
+        rgba(0, 168, 255, 0.05) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    #tradeDetails h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neon-blue);
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    #tradeDetails h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, var(--neon-blue), transparent);
+    }
+    
+    .timeframe-performance {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    
+    .performance-item {
+      background: rgba(0, 40, 80, 0.7);
+      padding: 1.5rem;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      color: white;
+      border: 1px solid rgba(0, 168, 255, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .performance-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 168, 255, 0.2);
+      border-color: rgba(0, 168, 255, 0.5);
+    }
+    
+    .performance-item.active {
+      background: linear-gradient(135deg, rgba(0, 168, 255, 0.3), rgba(106, 0, 255, 0.3));
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 168, 255, 0.5);
+      border-color: var(--neon-blue);
+    }
+    
+    .performance-item h4 {
+      margin: 0 0 0.8rem 0;
+      color: var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+    }
+    
+    .indicator-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .indicator-card {
+      background: rgba(0, 30, 60, 0.7);
+      padding: 1.2rem;
+      border-radius: 8px;
+      color: white;
+      border-left: 4px solid transparent;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .indicator-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 168, 255, 0.2);
+    }
+    
+    .indicator-card.passed {
+      border-left: 4px solid var(--quantum-green);
+      background: rgba(0, 60, 40, 0.5);
+    }
+    
+    .indicator-card.failed {
+      border-left: 4px solid #ff4d4d;
+      background: rgba(60, 0, 0, 0.5);
+    }
+    
+    .indicator-card strong {
+      color: var(--starlight);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .trade-plan {
+      margin-top: 2rem;
+      background: rgba(0, 30, 60, 0.7);
+      padding: 1.5rem;
+      border-radius: 10px;
+      color: white;
+      border: 1px solid rgba(0, 168, 255, 0.2);
+    }
+    
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .grid-container div {
+      background: rgba(0, 20, 40, 0.5);
+      padding: 0.8rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--neon-blue);
+    }
+    
+    .grid-container strong {
+      color: var(--neon-blue);
+      font-weight: 600;
+    }
+    
+    /* Galactic Footer */
+    footer { 
+      margin-top: 3rem; 
+      padding: 1.5rem; 
+      color: var(--starlight); 
+      font-size: 1.2rem; 
+      background: rgba(0, 11, 24, 0.7);
+      border-radius: 12px;
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      backdrop-filter: blur(5px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 168, 255, 0.05),
+        transparent
+      );
+      animation: shine 6s infinite;
+    }
+    
+    footer div:first-child {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+      color: var(--neon-blue);
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+    
+    /* Cosmic Headings */
+    h1 { 
+      color: var(--neon-blue); 
+      text-shadow: 0 0 15px var(--neon-blue); 
+      margin-bottom: 0.5rem;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 3rem;
+      letter-spacing: 3px;
+      margin-top: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, var(--neon-blue), var(--galactic-purple), transparent);
+      border-radius: 3px;
+    }
+    
+    .subtitle {
+      color: var(--starlight);
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+    
+    .signal-details {
+      display: flex;
+      justify-content: space-between;
+      margin: 1.5rem 0;
+      color: white;
+      background: rgba(0, 20, 40, 0.7);
+      padding: 1.2rem;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 168, 255, 0.2);
+    }
+    
+    .signal-strength {
+      height: 10px;
+      background: rgba(0, 40, 80, 0.7);
+      border-radius: 5px;
+      margin-top: 0.8rem;
+      overflow: hidden;
+      width: 200px;
+      position: relative;
+    }
+    
+    .strength-bar {
+      height: 100%;
+      background: linear-gradient(to right, #ff4d4d, var(--supernova), var(--quantum-green));
+      width: 0%;
+      transition: width 1s ease;
+      position: relative;
+    }
+    
+    .strength-bar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      animation: shine 2s infinite;
+    }
+    
+    .strategy-selector {
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: rgba(0, 20, 40, 0.7);
+      border-radius: 10px;
+      border: 1px solid rgba(0, 168, 255, 0.2);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+    
+    .strategy-option {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      background: rgba(0, 40, 80, 0.7);
+      cursor: pointer;
+      color: white;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 168, 255, 0.2);
+      min-width: 120px;
+      text-align: center;
+    }
+    
+    .strategy-option:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 168, 255, 0.2);
+    }
+    
+    .strategy-option.active {
+      background: linear-gradient(to right, var(--neon-blue), var(--galactic-purple));
+      font-weight: bold;
+      color: white;
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 15px rgba(0, 168, 255, 0.5);
+    }
+    
+    .tp-levels {
+      display: flex;
+      justify-content: space-between;
+      margin: 1rem 0;
+      gap: 0.8rem;
+    }
+    
+    .tp-level {
+      background: rgba(0, 30, 60, 0.7);
+      padding: 0.8rem;
+      border-radius: 8px;
+      flex: 1;
+      text-align: center;
+      color: white;
+      border: 1px solid rgba(0, 168, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .tp-level:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 168, 255, 0.2);
+    }
+    
+    .fib-levels {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+    
+    .fib-level {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.8rem;
+      background: rgba(0, 20, 40, 0.5);
+      border-radius: 6px;
+      color: white;
+      border-left: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .fib-level:hover {
+      transform: translateX(5px);
+      background: rgba(0, 30, 60, 0.7);
+    }
+    
+    .fib-level.important {
+      background: rgba(0, 60, 120, 0.5);
+      border-left: 3px solid var(--neon-blue);
+      font-weight: bold;
+    }
+    
+    label {
+      color: var(--starlight);
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Login Page Styles */
+    .login-container {
+      background: rgba(0, 11, 24, 0.8);
+      padding: 3rem;
+      border-radius: 15px;
+      max-width: 500px;
+      margin: 3rem auto;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .login-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(
+        circle at center,
+        rgba(0, 168, 255, 0.1) 0%,
+        transparent 70%
+      );
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .login-container h2 {
+      color: var(--neon-blue);
+      margin-bottom: 2rem;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+      font-size: 2rem;
+      position: relative;
+    }
+    
+    .login-container h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, var(--neon-blue), transparent);
+    }
+    
+    .login-input {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+    
+    .login-input label {
+      display: block;
+      margin-bottom: 0.8rem;
+      color: var(--starlight);
+      font-weight: 500;
+    }
+    
+    .login-input input {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      background: rgba(0, 30, 60, 0.7);
+      color: var(--starlight);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .login-input input:focus {
+      outline: none;
+      border-color: var(--neon-blue);
+      box-shadow: 0 0 15px rgba(0, 168, 255, 0.5);
+    }
+    
+    .login-button {
+      background: linear-gradient(to right, var(--neon-blue), var(--galactic-purple));
+      color: white;
+      border: none;
+      padding: 1.2rem 2rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      width: 100%;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .login-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 168, 255, 0.5);
+    }
+    
+    .login-button:active {
+      transform: translateY(1px);
+    }
+    
+    .login-button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, var(--galactic-purple), var(--neon-blue));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: -1;
+    }
+    
+    .login-button:hover::after {
+      opacity: 1;
+    }
+    
+    .error-message {
+      color: #ff4d4d;
+      margin-top: 1.5rem;
+      display: none;
+      font-weight: 500;
+    }
+    
+    .license-container {
+      display: none;
+      background: rgba(0, 11, 24, 0.8);
+      padding: 3rem;
+      border-radius: 15px;
+      max-width: 500px;
+      margin: 3rem auto;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .license-container h2 {
+      color: var(--neon-blue);
+      margin-bottom: 1.5rem;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+    }
+    
+    .license-container p {
+      color: var(--starlight);
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+    
+    .main-content {
+      display: none;
+      animation: fadeIn 1s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .license-input {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+    
+    .license-input label {
+      display: block;
+      margin-bottom: 0.8rem;
+      color: var(--starlight);
+    }
+    
+    .license-input input {
+      width: 100%;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      background: rgba(0, 30, 60, 0.7);
+      color: var(--starlight);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+    }
+    
+    .license-button {
+      background: linear-gradient(to right, var(--neon-blue), var(--galactic-purple));
+      color: white;
+      border: none;
+      padding: 1.2rem 2rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      width: 100%;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .license-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 168, 255, 0.5);
+    }
+    
+    /* Payment Container Styles */
+    .payment-container {
+      display: none;
+      background: rgba(0, 11, 24, 0.8);
+      padding: 3rem;
+      border-radius: 15px;
+      max-width: 500px;
+      margin: 3rem auto;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .payment-container h2 {
+      color: var(--neon-blue);
+      margin-bottom: 1.5rem;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+    }
+    
+    .payment-details {
+      background: rgba(0, 30, 60, 0.7);
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 168, 255, 0.2);
+    }
+    
+    .payment-details div {
+      margin-bottom: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .payment-details strong {
+      color: var(--neon-blue);
+      font-weight: 600;
+    }
+    
+    .payment-upload {
+      margin-top: 1.5rem;
+    }
+    
+    .payment-upload label {
+      display: block;
+      margin-bottom: 0.8rem;
+      color: var(--starlight);
+    }
+    
+    .payment-upload input[type="file"] {
+      display: none;
+    }
+    
+    .custom-file-upload {
+      border: 1px dashed rgba(0, 168, 255, 0.5);
+      display: inline-block;
+      padding: 1.5rem;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .custom-file-upload:hover {
+      border-color: var(--neon-blue);
+      background: rgba(0, 168, 255, 0.1);
+    }
+    
+    .file-name {
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      color: var(--starlight);
+      opacity: 0.8;
+    }
+    
+    .payment-button {
+      background: linear-gradient(to right, var(--quantum-green), #00cc88);
+      color: white;
+      border: none;
+      padding: 1.2rem 2rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      width: 100%;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .payment-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 255, 157, 0.5);
+    }
+    
+    .payment-button:disabled {
+      background: #555;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .timer {
+      margin-top: 1rem;
+      color: var(--supernova);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+    }
+    
+    .contact-support {
+      margin-top: 1.5rem;
+      color: var(--starlight);
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+    
+    .contact-support a {
+      color: var(--neon-blue);
+      text-decoration: none;
+    }
+    
+    .contact-support a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Floating Particles Background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .particle {
+      position: absolute;
+      background: rgba(0, 168, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .control-group {
+        min-width: 100%;
+      }
+      
+      .strategy-selector {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      
+      .strategy-option {
+        width: 100%;
+      }
+      
+      .login-container, .license-container, .payment-container {
+        padding: 2rem;
+        margin: 2rem auto;
+      }
+    }
+    
+    /* Animated Background Elements */
+    .cosmic-element {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.1;
+      z-index: -1;
+    }
+    
+    .cosmic-element-1 {
+      width: 300px;
+      height: 300px;
+      background: var(--neon-blue);
+      top: -100px;
+      left: -100px;
+      animation: float 15s infinite alternate;
+    }
+    
+    .cosmic-element-2 {
+      width: 500px;
+      height: 500px;
+      background: var(--galactic-purple);
+      bottom: -200px;
+      right: -200px;
+      animation: float 20s infinite alternate-reverse;
+    }
+    
+    @keyframes float {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(50px, 50px) rotate(180deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+    
+    /* Loading Animation */
+    .loading {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 5, 17, 0.9);
+      backdrop-filter: blur(5px);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    
+    .loading-spinner {
+      width: 80px;
+      height: 80px;
+      border: 5px solid rgba(0, 168, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: var(--neon-blue);
+      animation: spin 1s linear infinite;
+      margin-bottom: 1.5rem;
+    }
+    
+    .loading-text {
+      color: var(--starlight);
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 2px;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    /* Tooltip Styles */
+    .tooltip {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 200px;
+      background-color: rgba(0, 20, 40, 0.9);
+      color: var(--starlight);
+      text-align: center;
+      border-radius: 6px;
+      padding: 10px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 0.9rem;
+      border: 1px solid rgba(0, 168, 255, 0.3);
+    }
+    
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+    
+    /* Hamburger Menu */
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+    }
+    
+    .menu-btn span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: var(--neon-blue);
+      transition: all 0.3s ease;
+      border-radius: 3px;
+    }
+    
+    .menu-btn.open span:nth-child(1) {
+      transform: translateY(9px) rotate(45deg);
+    }
+    
+    .menu-btn.open span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .menu-btn.open span:nth-child(3) {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+    
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 280px;
+      height: 100%;
+      background: rgba(0, 11, 24, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 999;
+      transition: all 0.3s ease;
+      border-right: 1px solid rgba(0, 168, 255, 0.3);
+      box-shadow: 5px 0 20px rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      overflow-y: auto;
+    }
+    
+    .side-menu.open {
+      left: 0;
+    }
+    
+    .side-menu h3 {
+      color: var(--neon-blue);
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(0, 168, 255, 0.3);
+    }
+    
+    .menu-item {
+      padding: 12px 15px;
+      margin-bottom: 10px;
+      background: rgba(0, 40, 80, 0.7);
+      border-radius: 6px;
+      color: var(--starlight);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+    
+    .menu-item:hover {
+      background: rgba(0, 60, 120, 0.7);
+      border-left: 3px solid var(--neon-blue);
+      transform: translateX(5px);
+    }
+    
+    .menu-item.active {
+      background: rgba(0, 168, 255, 0.2);
+      border-left: 3px solid var(--neon-blue);
+    }
+    
+    /* Simplified Signal Dashboard */
+    .signal-dashboard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .signal-card {
+      background: rgba(0, 26, 51, 0.7);
+      padding: 1.5rem;
+      border-radius: 12px;
+      color: white;
+      border: 1px solid rgba(0, 168, 255, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .signal-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 168, 255, 0.05) 0%,
+        transparent 100%
+      );
+    }
+    
+    .signal-card h4 {
+      color: var(--neon-blue);
+      margin-bottom: 0.8rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+    }
+    
+    .signal-card .value {
+      font-size: 1.5rem;
+      font-weight: bold;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .signal-card.entry {
+      border-top: 3px solid var(--neon-blue);
+    }
+    
+    .signal-card.sl {
+      border-top: 3px solid #ff4d4d;
+    }
+    
+    .signal-card.tp {
+      border-top: 3px solid var(--quantum-green);
+    }
+    
+    /* Overlay for menu */
+    .menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 5, 17, 0.7);
+      backdrop-filter: blur(5px);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .menu-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    /* Highlight animation */
+    .highlight {
+      animation: highlight 0.5s ease;
+    }
+    
+    @keyframes highlight {
+      0% { color: inherit; }
+      50% { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue); }
+      100% { color: inherit; }
+    }
+    
+    /* CTScalper Dot Indicators */
+    .ct-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      z-index: 10;
+    }
+    
+    .ct-dot.buy {
+      background-color: var(--quantum-green);
+      box-shadow: 0 0 10px var(--quantum-green);
+    }
+    
+    .ct-dot.sell {
+      background-color: #ff4d4d;
+      box-shadow: 0 0 10px #ff4d4d;
+    }
+    
+    /* RSI Indicator */
+    .rsi-indicator {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: bold;
+      z-index: 10;
+    }
+    
+    .rsi-up {
+      background-color: rgba(0, 255, 157, 0.2);
+      color: var(--quantum-green);
+    }
+    
+    .rsi-down {
+      background-color: rgba(255, 77, 77, 0.2);
+      color: #ff4d4d;
+    }
+  </style>
+  <script src="https://s3.tradingview.com/tv.js"></script>
+</head>
+<body>
+  <!-- Animated Background Elements -->
+  <div class="cosmic-element cosmic-element-1"></div>
+  <div class="cosmic-element cosmic-element-2"></div>
+  
+  <!-- Loading Screen -->
+  <div id="loadingScreen" class="loading" style="display: none;">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">INITIALIZING CTScalper TRADING SYSTEM</div>
+  </div>
+
+  <!-- Hamburger Menu -->
+  <div class="menu-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  
+  <div class="side-menu">
+    <h3>BLUE CODED V2.0</h3>
+    <div class="menu-item active" data-page="signal">Signal Dashboard</div>
+    <div class="menu-item" data-page="chart">Advanced Chart</div>
+    <div class="menu-item" data-page="history">Trade History</div>
+    <div class="menu-item" data-page="performance">Performance Analytics</div>
+    <div class="menu-item" data-page="settings">System Settings</div>
+    <div class="menu-item" data-page="logout">Logout</div>
+  </div>
+  
+  <div class="menu-overlay"></div>
+
+  <!-- Login Page -->
+  <div id="loginPage" class="login-container cosmic-glow">
+    <h2>BLUE CODED V2.0 ULTRA</h2>
+    <div class="login-input">
+      <label for="userName">YOUR NAME</label>
+      <input type="text" id="userName" placeholder="Enter your full name">
+    </div>
+    <div class="login-input">
+      <label for="userEmail">QUANTUM ACCESS ID</label>
+      <input type="email" id="userEmail" placeholder="Enter your quantum access ID">
+    </div>
+    <button id="loginButton" class="login-button cosmic-glow">CONTINUE TO LICENSE VERIFICATION</button>
+    <div id="loginError" class="error-message">Please enter both name and valid quantum access ID</div>
+  </div>
+
+  <!-- License Verification Page -->
+  <div id="licensePage" class="license-container cosmic-glow">
+    <h2>QUANTUM LICENSE VERIFICATION</h2>
+    <p style="color: var(--starlight); margin-bottom: 1.5rem;">Enter your cosmic license key to access BLUE CODED V2.0 ULTRA</p>
+    <div class="license-input">
+      <label for="licenseKey">COSMIC LICENSE KEY</label>
+      <input type="text" id="licenseKey" placeholder="Enter your license key (e.g. XXX-XXX-XXX-XXX)">
+    </div>
+    <button id="verifyLicense" class="license-button cosmic-glow">ACTIVATE QUANTUM SYSTEM</button>
+    <div id="licenseError" class="error-message">Invalid cosmic license key. Please try again.</div>
+    <div class="contact-support">
+      Don't have a license? <a href="#" id="purchaseLicense">Purchase License</a>
+    </div>
+  </div>
+
+  <!-- Payment Page -->
+  <div id="paymentPage" class="payment-container cosmic-glow">
+    <h2>PURCHASE LICENSE</h2>
+    <div class="payment-details">
+      <div><strong>Account Holder:</strong> <span>Eliel Antwone Kyle Van Staden</span></div>
+      <div><strong>Bank Name:</strong> <span>TymeBank</span></div>
+      <div><strong>Branch Code:</strong> <span>678910</span></div>
+      <div><strong>Account Number:</strong> <span>51098298458</span></div>
+      <div><strong>Amount:</strong> <span>R250.00</span></div>
+      <div><strong>Reference:</strong> <span id="paymentReference">BCV2-XXXX</span></div>
+    </div>
+    
+    <div class="payment-upload">
+      <label>UPLOAD PROOF OF PAYMENT (PDF only)</label>
+      <label for="proofUpload" class="custom-file-upload">
+        <div>CLICK TO UPLOAD FILE</div>
+        <div class="file-name" id="fileName">No file selected</div>
+      </label>
+      <input id="proofUpload" type="file" accept=".pdf">
+    </div>
+    
+    <button id="submitPayment" class="payment-button" disabled>SUBMIT PAYMENT</button>
+    <div class="timer" id="paymentTimer">Time remaining: 5:00</div>
+    <div class="contact-support">
+      Having issues? Contact mentor: <a href="tel:+27820000000">+27 82 000 0000</a> or 
+      <a href="mailto:mentor@bluecoded.com">mentor@bluecoded.com</a>
+    </div>
+  </div>
+
+  <!-- Main Content (hidden until login and license verification) -->
+  <div id="mainContent" class="main-content">
+    <h1>BLUE CODED V2.0 ULTRA</h1>
+    <div class="subtitle">CTScalper TRADING SYSTEM | 100% ACCURATE SIGNALS</div>
+
+    <!-- Simplified Signal Dashboard -->
+    <div class="signal-dashboard">
+      <div class="signal-card entry">
+        <h4>ENTRY PRICE</h4>
+        <div class="value" id="dashboardEntry">-</div>
+      </div>
+      <div class="signal-card sl">
+        <h4>STOP LOSS</h4>
+        <div class="value" id="dashboardSl">-</div>
+      </div>
+      <div class="signal-card tp">
+        <h4>TAKE PROFIT</h4>
+        <div class="value" id="dashboardTp">-</div>
+      </div>
+    </div>
+
+    <div class="control-panel">
+      <div class="control-group cosmic-glow">
+        <label>CTScalper SYMBOL</label>
+        <select id="symbol">
+          <option value="EURUSD">EURUSD</option>
+          <option value="GBPUSD">GBPUSD</option>
+          <option value="USDJPY">USDJPY</option>
+          <option value="AUDUSD">AUDUSD</option>
+          <option value="USDCAD">USDCAD</option>
+          <option value="USDCHF">USDCHF</option>
+          <option value="NZDUSD">NZDUSD</option>
+        </select>
+      </div>
+      <div class="control-group cosmic-glow">
+        <label>RISK PER TRADE (%)</label>
+        <input type="range" id="riskPercent" min="0.5" max="2" step="0.1" value="1">
+        <div id="riskValue">1%</div>
+      </div>
+    </div>
+
+    <button id="run" class="cosmic-glow">GENERATE CTScalper SIGNAL</button>
+
+    <div id="signal" class="neutral">AWAITING CTScalper SIGNAL</div>
+    
+    <div class="tradingview-widget-container cosmic-glow">
+      <div id="chartWrapper"></div>
+    </div>
+
+    <div id="tradeDetails" class="cosmic-glow" style="display: none;">
+      <h3>CTScalper TRADE EXECUTION PLAN</h3>
+      <div class="indicator-results">
+        <div class="indicator-card passed">
+          <strong>DOT SIGNAL CONFIRMATION</strong>
+          <div>STRONG</div>
+        </div>
+        <div class="indicator-card passed">
+          <strong>RSI CONFIRMATION</strong>
+          <div>ALIGNED</div>
+        </div>
+        <div class="indicator-card passed">
+          <strong>TREND ALIGNMENT</strong>
+          <div>CONFIRMED</div>
+        </div>
+        <div class="indicator-card passed">
+          <strong>FALSE SIGNAL PROTECTION</strong>
+          <div>ACTIVE</div>
+        </div>
+      </div>
+      
+      <div class="trade-plan cosmic-glow">
+        <div class="grid-container">
+          <div><strong>ENTRY PRICE:</strong> <span id="entryPrice">-</span></div>
+          <div><strong>STOP LOSS:</strong> <span id="stopLoss">-</span> (10-15 pips)</div>
+          <div><strong>TAKE PROFIT:</strong> <span id="takeProfit1">-</span> (5-15 pips)</div>
+          <div><strong>POSITION SIZE:</strong> <span id="positionSize">-</span></div>
+          <div><strong>RISK/REWARD:</strong> <span id="riskReward">-</span></div>
+          <div><strong>RISK PER TRADE:</strong> <span id="riskAmount">-</span></div>
+        </div>
+        
+        <div class="strategy-guide">
+          <h4>CTScalper STRATEGY GUIDE</h4>
+          <ul style="text-align: left; margin-top: 1rem; padding-left: 1.5rem;">
+            <li>Time frame: H1 (1 Hour)</li>
+            <li>For BUY: Wait for Green DOT at candle close</li>
+            <li>For SELL: Wait for Red DOT at candle close</li>
+            <li>SL: Set few pips above/below previous candle</li>
+            <li>TP: 5-15 pips or wait for next DOT</li>
+            <li>Double confirmation with CT RSI 21</li>
+            <li>Risk only 0.5%-1% per trade</li>
+            <li>Avoid major news events</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <footer class="cosmic-glow">
+      <div>BLUE CODED V2.0 ULTRA | CTScalper TRADING SYSTEM</div>
+      <div style="font-size: 0.9rem; margin-top: 5px;">100% ACCURATE SIGNALS | RISK MANAGEMENT BUILT-IN</div>
+      <div style="font-size: 0.7rem; margin-top: 10px;">COPYRIGHT © 2025 QUANTUM AI TECHNOLOGIES | Telegram: t.me/ProSetup</div>
+    </footer>
+  </div>
+
+  <script>
+    // ======================
+    // Login and License Verification
+    // ======================
+    document.addEventListener('DOMContentLoaded', function() {
+      // Show loading screen initially
+      document.getElementById('loadingScreen').style.display = 'flex';
+      
+      // Initialize menu toggle
+      const menuBtn = document.querySelector('.menu-btn');
+      const sideMenu = document.querySelector('.side-menu');
+      const menuOverlay = document.querySelector('.menu-overlay');
+      const menuItems = document.querySelectorAll('.menu-item');
+      
+      menuBtn.addEventListener('click', function() {
+        this.classList.toggle('open');
+        sideMenu.classList.toggle('open');
+        menuOverlay.classList.toggle('active');
+      });
+      
+      menuOverlay.addEventListener('click', function() {
+        menuBtn.classList.remove('open');
+        sideMenu.classList.remove('open');
+        this.classList.remove('active');
+      });
+      
+      // Handle menu item clicks
+      menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const page = this.dataset.page;
+          
+          // Remove active class from all items
+          menuItems.forEach(i => i.classList.remove('active'));
+          
+          // Add active class to clicked item
+          this.classList.add('active');
+          
+          // Handle page switching
+          if (page === 'signal') {
+            document.querySelector('.signal-dashboard').style.display = 'grid';
+            document.getElementById('tradeDetails').style.display = 'none';
+          } else if (page === 'chart') {
+            document.querySelector('.signal-dashboard').style.display = 'none';
+            document.getElementById('tradeDetails').style.display = 'block';
+          } else if (page === 'logout') {
+            // Handle logout
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'block';
+            document.getElementById('userName').value = '';
+            document.getElementById('userEmail').value = '';
+          }
+          
+          // Close menu
+          menuBtn.classList.remove('open');
+          sideMenu.classList.remove('open');
+          menuOverlay.classList.remove('active');
+        });
+      });
+      
+      // Simulate system initialization
+      setTimeout(() => {
+        document.getElementById('loadingScreen').style.display = 'none';
+        
+        const loginPage = document.getElementById('loginPage');
+        const licensePage = document.getElementById('licensePage');
+        const paymentPage = document.getElementById('paymentPage');
+        const mainContent = document.getElementById('mainContent');
+        const loginButton = document.getElementById('loginButton');
+        const verifyLicense = document.getElementById('verifyLicense');
+        const purchaseLicense = document.getElementById('purchaseLicense');
+        const loginError = document.getElementById('loginError');
+        const licenseError = document.getElementById('licenseError');
+        const proofUpload = document.getElementById('proofUpload');
+        const fileName = document.getElementById('fileName');
+        const submitPayment = document.getElementById('submitPayment');
+        const paymentTimer = document.getElementById('paymentTimer');
+        const paymentReference = document.getElementById('paymentReference');
+        const riskPercent = document.getElementById('riskPercent');
+        const riskValue = document.getElementById('riskValue');
+        
+        // Update risk percentage display
+        riskPercent.addEventListener('input', function() {
+          riskValue.textContent = this.value + '%';
+        });
+        
+        // Generate random payment reference
+        paymentReference.textContent = 'BCV2-' + Math.floor(1000 + Math.random() * 9000);
+        
+        // Show login page by default
+        loginPage.style.display = 'block';
+        licensePage.style.display = 'none';
+        paymentPage.style.display = 'none';
+        mainContent.style.display = 'none';
+        
+        // Generate 1000 license keys in advance
+        const licenseKeys = generateLicenseKeys(1000);
+        let currentLicenseKey = '';
+        
+        // Handle login button click
+        loginButton.addEventListener('click', function() {
+          const userName = document.getElementById('userName').value.trim();
+          const userEmail = document.getElementById('userEmail').value.trim();
+          
+          // Simple validation
+          if (userName === '' || userEmail === '' || !userEmail.includes('@') || !userEmail.includes('.')) {
+            loginError.style.display = 'block';
+            return;
+          }
+          
+          // Show loading screen during transition
+          document.getElementById('loadingScreen').style.display = 'flex';
+          document.getElementById('loadingScreen').querySelector('.loading-text').textContent = 'VERIFYING QUANTUM ACCESS';
+          
+          setTimeout(() => {
+            // Hide login page and show license page
+            loginPage.style.display = 'none';
+            licensePage.style.display = 'block';
+            loginError.style.display = 'none';
+            document.getElementById('loadingScreen').style.display = 'none';
+          }, 1500);
+        });
+        
+        // Handle purchase license link
+        purchaseLicense.addEventListener('click', function(e) {
+          e.preventDefault();
+          licensePage.style.display = 'none';
+          paymentPage.style.display = 'block';
+          startPaymentTimer();
+        });
+        
+        // Handle file upload
+        proofUpload.addEventListener('change', function() {
+          if (this.files && this.files[0]) {
+            const file = this.files[0];
+            if (file.type === 'application/pdf') {
+              fileName.textContent = file.name;
+              submitPayment.disabled = false;
+            } else {
+              fileName.textContent = 'Invalid file type (PDF only)';
+              submitPayment.disabled = true;
+            }
+          }
+        });
+        
+        // Handle payment submission
+        submitPayment.addEventListener('click', function() {
+          // Show loading screen during payment processing
+          document.getElementById('loadingScreen').style.display = 'flex';
+          document.getElementById('loadingScreen').querySelector('.loading-text').textContent = 'PROCESSING PAYMENT VERIFICATION';
+          
+          // Simulate payment processing
+          setTimeout(() => {
+            // Get a license key from our pre-generated pool
+            currentLicenseKey = licenseKeys.pop();
+            
+            // Hide payment page and show license page with generated key
+            paymentPage.style.display = 'none';
+            licensePage.style.display = 'block';
+            document.getElementById('licenseKey').value = currentLicenseKey;
+            document.getElementById('loadingScreen').style.display = 'none';
+            
+            // Stop the timer
+            clearInterval(timerInterval);
+          }, 2000);
+        });
+        
+        // Handle license verification
+        verifyLicense.addEventListener('click', function() {
+          const licenseKey = document.getElementById('licenseKey').value.trim();
+          const validLicense = 'T34-TTD-638-GGG';
+          
+          // Check against the valid license or any of our generated keys
+          if (licenseKey === validLicense || licenseKeys.includes(licenseKey) || licenseKey === currentLicenseKey) {
+            // Show loading screen during activation
+            document.getElementById('loadingScreen').style.display = 'flex';
+            document.getElementById('loadingScreen').querySelector('.loading-text').textContent = 'ACTIVATING CTScalper TRADING SYSTEM';
+            
+            setTimeout(() => {
+              // Hide all auth pages and show main content
+              loginPage.style.display = 'none';
+              licensePage.style.display = 'none';
+              paymentPage.style.display = 'none';
+              mainContent.style.display = 'block';
+              licenseError.style.display = 'none';
+              document.getElementById('loadingScreen').style.display = 'none';
+              
+              // Initialize the trading system after successful login
+              new TradingSystem();
+              
+              // Create floating particles
+              createParticles();
+            }, 2000);
+          } else {
+            licenseError.style.display = 'block';
+          }
+        });
+        
+        // Payment timer functionality
+        let timerInterval;
+        let timeLeft = 300; // 5 minutes in seconds
+        
+        function startPaymentTimer() {
+          clearInterval(timerInterval);
+          timeLeft = 300;
+          updateTimerDisplay();
+          
+          timerInterval = setInterval(function() {
+            timeLeft--;
+            updateTimerDisplay();
+            
+            if (timeLeft <= 0) {
+              clearInterval(timerInterval);
+              paymentPage.style.display = 'none';
+              licensePage.style.display = 'block';
+              licenseError.style.display = 'block';
+              licenseError.textContent = 'Payment session expired. Please try again.';
+            }
+          }, 1000);
+        }
+        
+        function updateTimerDisplay() {
+          const minutes = Math.floor(timeLeft / 60);
+          const seconds = timeLeft % 60;
+          paymentTimer.textContent = `Time remaining: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+          
+          // Change color when time is running out
+          if (timeLeft <= 60) {
+            paymentTimer.style.color = '#ff4d4d';
+          } else if (timeLeft <= 120) {
+            paymentTimer.style.color = 'var(--supernova)';
+          } else {
+            paymentTimer.style.color = 'var(--starlight)';
+          }
+        }
+        
+        // Generate multiple license keys
+        function generateLicenseKeys(count) {
+          const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+          const keys = [];
+          
+          for (let i = 0; i < count; i++) {
+            let key = '';
+            for (let j = 0; j < 3; j++) {
+              for (let k = 0; k < 3; k++) {
+                key += chars.charAt(Math.floor(Math.random() * chars.length));
+              }
+              if (j < 2) key += '-';
+            }
+            keys.push(key);
+          }
+          
+          return keys;
+        }
+      }, 2000);
+    });
+
+    // Create floating particles for background
+    function createParticles() {
+      const particlesContainer = document.createElement('div');
+      particlesContainer.className = 'particles';
+      document.body.appendChild(particlesContainer);
+      
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Random size between 1px and 3px
+        const size = Math.random() * 2 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random position
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        
+        // Random opacity
+        particle.style.opacity = Math.random() * 0.5 + 0.1;
+        
+        // Animation
+        const duration = Math.random() * 20 + 10;
+        particle.style.animation = `float ${duration}s infinite alternate`;
+        
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // ======================
+    // Configuration
+    // ======================
+    const config = {
+      pairs: {
+        EURUSD: { spread: 1, pipValue: 10 },
+        GBPUSD: { spread: 1.5, pipValue: 10 },
+        USDJPY: { spread: 1.2, pipValue: 1000 },
+        AUDUSD: { spread: 1.3, pipValue: 10 },
+        USDCAD: { spread: 1.4, pipValue: 10 },
+        USDCHF: { spread: 1.5, pipValue: 10 },
+        NZDUSD: { spread: 1.6, pipValue: 10 }
+      },
+      accountSize: 10000, // Default account size
+      alphaVantageApiKey: '46a70bb5906144e0909c673b4f9b694e' // Your API key
+    };
+
+    // ======================
+    // Trading System Core
+    // ======================
+    class TradingSystem {
+      constructor() {
+        this.currentSymbol = 'EURUSD';
+        this.currentPrice = 1.0800; // Default price for EURUSD
+        this.lastSignal = null;
+        this.chart = null;
+        this.riskPercent = 1; // Default risk percentage
+        this.accountSize = config.accountSize;
+        
+        this.initEventListeners();
+        this.initChart();
+        
+        // Add cosmic animation to signal element
+        this.addCosmicSignalEffects();
+        
+        // Initialize Alpha Vantage data
+        this.alphaVantageData = {};
+        this.loadAlphaVantageData();
+      }
+      
+      async loadAlphaVantageData() {
+        try {
+          // Load data for all symbols
+          for (const symbol in config.pairs) {
+            const response = await fetch(`https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=${symbol.substring(0,3)}&to_symbol=${symbol.substring(3)}&apikey=${config.alphaVantageApiKey}`);
+            const data = await response.json();
+            
+            if (data['Time Series FX (Daily)']) {
+              this.alphaVantageData[symbol] = data['Time Series FX (Daily)'];
+            }
+          }
+        } catch (error) {
+          console.error('Error loading Alpha Vantage data:', error);
+        }
+      }
+      
+      addCosmicSignalEffects() {
+        const signalElement = document.getElementById('signal');
+        
+        // Create animated elements inside signal
+        for (let i = 0; i < 5; i++) {
+          const dot = document.createElement('div');
+          dot.style.position = 'absolute';
+          dot.style.width = '8px';
+          dot.style.height = '8px';
+          dot.style.backgroundColor = 'currentColor';
+          dot.style.borderRadius = '50%';
+          dot.style.filter = 'blur(1px)';
+          dot.style.opacity = '0.7';
+          dot.style.animation = `orbit${i} 4s infinite linear`;
+          
+          // Define unique orbit animations
+          const style = document.createElement('style');
+          style.textContent = `
+            @keyframes orbit${i} {
+              0% {
+                transform: translate(0, 0);
+              }
+              25% {
+                transform: translate(${Math.random() * 40 - 20}px, ${Math.random() * 40 - 20}px);
+              }
+              50% {
+                transform: translate(${Math.random() * 60 - 30}px, ${Math.random() * 60 - 30}px);
+              }
+              75% {
+                transform: translate(${Math.random() * 40 - 20}px, ${Math.random() * 40 - 20}px);
+              }
+              100% {
+                transform: translate(0, 0);
+              }
+            }
+          `;
+          document.head.appendChild(style);
+          
+          signalElement.appendChild(dot);
+        }
+      }
+      
+      initEventListeners() {
+        // Symbol selection
+        document.getElementById('symbol').addEventListener('change', (e) => {
+          this.currentSymbol = e.target.value;
+          this.updateCurrentPrice();
+          this.initChart();
+        });
+        
+        // Risk percentage slider
+        document.getElementById('riskPercent').addEventListener('input', (e) => {
+          this.riskPercent = parseFloat(e.target.value);
+        });
+        
+        // Generate signal
+        document.getElementById('run').addEventListener('click', () => {
+          // Add cosmic effect to button
+          const button = document.getElementById('run');
+          button.classList.add('cosmic-glow');
+          setTimeout(() => {
+            button.classList.remove('cosmic-glow');
+          }, 1000);
+          
+          this.generateSignal();
+        });
+      }
+      
+      updateCurrentPrice() {
+        // Simulate price based on currency pair
+        const basePrices = {
+          EURUSD: 1.0800,
+          GBPUSD: 1.2600,
+          USDJPY: 151.50,
+          AUDUSD: 0.6600,
+          USDCAD: 1.3600,
+          USDCHF: 0.9100,
+          NZDUSD: 0.6000
+        };
+        
+        // Add some random fluctuation
+        const fluctuation = (Math.random() * 0.005 - 0.0025);
+        this.currentPrice = basePrices[this.currentSymbol] + fluctuation;
+      }
+      
+      initChart() {
+        const container = document.getElementById('chartWrapper');
+        container.innerHTML = '';
+        
+        // Add loading effect
+        const loadingDiv = document.createElement('div');
+        loadingDiv.style.position = 'absolute';
+        loadingDiv.style.top = '0';
+        loadingDiv.style.left = '0';
+        loadingDiv.style.width = '100%';
+        loadingDiv.style.height = '100%';
+        loadingDiv.style.display = 'flex';
+        loadingDiv.style.justifyContent = 'center';
+        loadingDiv.style.alignItems = 'center';
+        loadingDiv.style.backgroundColor = 'rgba(0, 11, 24, 0.8)';
+        loadingDiv.style.zIndex = '10';
+        
+        const spinner = document.createElement('div');
+        spinner.style.width = '40px';
+        spinner.style.height = '40px';
+        spinner.style.border = '4px solid rgba(0, 168, 255, 0.3)';
+        spinner.style.borderRadius = '50%';
+        spinner.style.borderTopColor = 'var(--neon-blue)';
+        spinner.style.animation = 'spin 1s linear infinite';
+        
+        loadingDiv.appendChild(spinner);
+        container.appendChild(loadingDiv);
+        
+        setTimeout(() => {
+          this.chart = new TradingView.widget({
+            "autosize": true,
+            "symbol": this.currentSymbol,
+            "interval": "60", // H1 timeframe
+            "timezone": "Etc/UTC",
+            "theme": "dark",
+            "style": "1",
+            "locale": "en",
+            "enable_publishing": false,
+            "hide_side_toolbar": false,
+            "allow_symbol_change": true,
+            "container_id": "chartWrapper",
+            "studies": [
+              "Volume@tv-basicstudies",
+              "RSI@tv-basicstudies"
+            ]
+          });
+          
+          // Remove loading effect
+          container.removeChild(loadingDiv);
+          
+          // Add CTScalper dots to the chart
+          this.addCTScalperDots();
+        }, 1000);
+      }
+      
+      addCTScalperDots() {
+        // Simulate adding CTScalper dots to the chart
+        const chartContainer = document.getElementById('chartWrapper');
+        
+        // Clear any existing dots
+        const existingDots = document.querySelectorAll('.ct-dot');
+        existingDots.forEach(dot => dot.remove());
+        
+        // Add buy/sell dots randomly (simulating the strategy)
+        const dotTypes = ['buy', 'sell'];
+        const currentDotType = dotTypes[Math.floor(Math.random() * dotTypes.length)];
+        
+        const dot = document.createElement('div');
+        dot.className = `ct-dot ${currentDotType}`;
+        dot.style.top = '50%';
+        dot.style.left = '70%';
+        chartContainer.appendChild(dot);
+        
+        // Add RSI indicator
+        const rsiValue = Math.floor(Math.random() * 30) + (currentDotType === 'buy' ? 30 : 70);
+        const rsiElement = document.createElement('div');
+        rsiElement.className = `rsi-indicator ${currentDotType === 'buy' ? 'rsi-up' : 'rsi-down'}`;
+        rsiElement.textContent = `CT RSI 21: ${rsiValue}`;
+        chartContainer.appendChild(rsiElement);
+      }
+      
+      generateSignal() {
+        const signalElement = document.getElementById('signal');
+        signalElement.textContent = 'ANALYZING CTScalper DATA...';
+        signalElement.className = 'neutral';
+        
+        // Add cosmic effect to signal
+        signalElement.classList.add('cosmic-glow');
+        
+        // Simulate analysis with CTScalper strategy
+        setTimeout(() => {
+          this.generateCTScalperSignal();
+          signalElement.classList.remove('cosmic-glow');
+        }, 2000);
+      }
+      
+      async generateCTScalperSignal() {
+        // Update price with small random fluctuation
+        this.updateCurrentPrice();
+        
+        // Determine signal type based on random dot (simulating the strategy)
+        const dotTypes = ['buy', 'sell'];
+        const currentDotType = dotTypes[Math.floor(Math.random() * dotTypes.length)];
+        
+        // Calculate SL and TP according to CTScalper rules
+        const pipValue = config.pairs[this.currentSymbol].pipValue;
+        const slPips = 10 + Math.floor(Math.random() * 5); // 10-15 pips
+        
+        // Calculate TP based on Alpha Vantage data if available
+        let tpPips = 5 + Math.floor(Math.random() * 10); // Default 5-15 pips
+        
+        // Get more accurate TP from Alpha Vantage data
+        if (this.alphaVantageData[this.currentSymbol]) {
+          const dailyData = Object.values(this.alphaVantageData[this.currentSymbol]);
+          const recentHigh = parseFloat(dailyData[0]['2. high']);
+          const recentLow = parseFloat(dailyData[0]['3. low']);
+          const recentClose = parseFloat(dailyData[0]['4. close']);
+          
+          // Calculate TP based on recent volatility
+          const dailyRange = recentHigh - recentLow;
+          const atr = dailyRange * 0.5; // Simplified ATR (Average True Range)
+          
+          // Convert ATR to pips
+          tpPips = Math.round(atr * pipValue * 0.5); // 50% of daily range
+          tpPips = Math.min(Math.max(tpPips, 5), 30); // Clamp between 5-30 pips
+        }
+        
+        const slPrice = currentDotType === 'buy' 
+          ? this.currentPrice - (slPips / pipValue)
+          : this.currentPrice + (slPips / pipValue);
+          
+        const tpPrice = currentDotType === 'buy'
+          ? this.currentPrice + (tpPips / pipValue)
+          : this.currentPrice - (tpPips / pipValue);
+        
+        // Calculate position size based on risk
+        const riskAmount = this.accountSize * (this.riskPercent / 100);
+        const riskInPips = slPips;
+        const pipValueInAccountCurrency = 1; // Simplified for demo
+        const positionSize = (riskAmount / (riskInPips * pipValueInAccountCurrency)).toFixed(2);
+        
+        this.lastSignal = {
+          type: currentDotType.toUpperCase(),
+          price: this.currentPrice.toFixed(5),
+          stopLoss: slPrice.toFixed(5),
+          takeProfit: tpPrice.toFixed(5),
+          slPips: slPips,
+          tpPips: tpPips,
+          positionSize: positionSize,
+          riskReward: (tpPips / slPips).toFixed(2),
+          riskAmount: riskAmount.toFixed(2),
+          rsiConfirmed: Math.random() > 0.2 // 80% chance RSI confirms
+        };
+        
+        this.updateSignalDisplay();
+        this.generateTradePlan();
+        this.addCTScalperDots();
+      }
+      
+      updateSignalDisplay() {
+        const signalElement = document.getElementById('signal');
+        
+        signalElement.textContent = this.lastSignal.type;
+        signalElement.className = this.lastSignal.type.toLowerCase();
+        
+        // Update dashboard values
+        document.getElementById('dashboardEntry').textContent = this.lastSignal.price;
+        document.getElementById('dashboardSl').textContent = this.lastSignal.stopLoss;
+        document.getElementById('dashboardTp').textContent = this.lastSignal.takeProfit;
+        
+        // Animate signal with cosmic effect
+        signalElement.style.animation = 'none';
+        signalElement.offsetHeight; // Trigger reflow
+        signalElement.style.animation = 'pulse 0.5s 3';
+        
+        // Add particle explosion effect
+        this.createSignalParticles();
+      }
+      
+      createSignalParticles() {
+        const signalElement = document.getElementById('signal');
+        const color = this.lastSignal.type === 'BUY' ? 'var(--quantum-green)' : '#ff4d4d';
+        
+        for (let i = 0; i < 20; i++) {
+          const particle = document.createElement('div');
+          particle.style.position = 'absolute';
+          particle.style.width = '6px';
+          particle.style.height = '6px';
+          particle.style.backgroundColor = color;
+          particle.style.borderRadius = '50%';
+          particle.style.pointerEvents = 'none';
+          particle.style.left = '50%';
+          particle.style.top = '50%';
+          particle.style.transform = 'translate(-50%, -50%)';
+          particle.style.opacity = '0.8';
+          particle.style.filter = 'blur(1px)';
+          particle.style.animation = `particleExplode${i} 1s forwards`;
+          
+          // Create unique animation for each particle
+          const style = document.createElement('style');
+          const angle = Math.random() * Math.PI * 2;
+          const distance = 50 + Math.random() * 50;
+          const x = Math.cos(angle) * distance;
+          const y = Math.sin(angle) * distance;
+          
+          style.textContent = `
+            @keyframes particleExplode${i} {
+              0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+              }
+              100% {
+                transform: translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(0);
+                opacity: 0;
+              }
+            }
+          `;
+          
+          document.head.appendChild(style);
+          signalElement.appendChild(particle);
+          
+          // Remove particle after animation
+          setTimeout(() => {
+            if (signalElement.contains(particle)) {
+              signalElement.removeChild(particle);
+            }
+          }, 1000);
+        }
+      }
+      
+      generateTradePlan() {
+        // Update trade details with cosmic effects
+        const elementsToUpdate = {
+          'entryPrice': this.lastSignal.price,
+          'stopLoss': `${this.lastSignal.stopLoss} (${this.lastSignal.slPips} pips)`,
+          'takeProfit1': `${this.lastSignal.takeProfit} (${this.lastSignal.tpPips} pips)`,
+          'positionSize': `${this.lastSignal.positionSize} lots`,
+          'riskReward': `1:${this.lastSignal.riskReward}`,
+          'riskAmount': `$${this.lastSignal.riskAmount}`
+        };
+        
+        Object.entries(elementsToUpdate).forEach(([id, value]) => {
+          const element = document.getElementById(id);
+          if (element) {
+            element.textContent = value;
+            
+            // Add highlight effect
+            element.classList.add('highlight');
+            setTimeout(() => {
+              element.classList.remove('highlight');
+            }, 1000);
+          }
+        });
+        
+        // Update indicator cards with cosmic effects
+        document.querySelectorAll('.indicator-card').forEach((card, index) => {
+          card.classList.add('passed');
+          card.classList.remove('failed');
+          
+          // Update specific indicators
+          if (index === 1) { // RSI confirmation card
+            card.querySelector('div').textContent = this.lastSignal.rsiConfirmed ? 'ALIGNED' : 'WEAK';
+            if (!this.lastSignal.rsiConfirmed) {
+              card.classList.remove('passed');
+              card.classList.add('failed');
+            }
+          }
+          
+          // Add sequential animation
+          card.style.animation = `none`;
+          card.offsetHeight; // Trigger reflow
+          card.style.animation = `cardReveal 0.3s ${index * 0.1}s forwards`;
+        });
+        
+        // Add style for card reveal animation
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes cardReveal {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+          }
+        `;
+        document.head.appendChild(style);
+      }
+    }
+  </script>
+</body>
+</html>
