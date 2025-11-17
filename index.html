@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* All existing CSS remains unchanged */
         :root {
             --primary-color: #008000;
             --secondary-color: #006400;
@@ -55,6 +54,16 @@
             text-align: center;
             text-shadow: 0 0 5px #ffffff;
             border-bottom: 1px solid #008000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .hamburger-menu {
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            padding: 5px;
         }
         
         .card-body {
@@ -313,13 +322,111 @@
             text-align: center;
             border: 1px solid rgba(0, 128, 0, 0.2);
         }
+        
+        /* Hamburger Menu Styles */
+        .hamburger-menu {
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            padding: 5px;
+        }
+        
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: var(--dark-color);
+            color: white;
+            transition: right 0.3s ease;
+            z-index: 1000;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+        }
+        
+        .side-menu.active {
+            right: 0;
+        }
+        
+        .side-menu-header {
+            background-color: var(--primary-color);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #008000;
+        }
+        
+        .side-menu-header h3 {
+            margin: 0;
+            color: white;
+        }
+        
+        .close-menu {
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .side-menu-content {
+            padding: 20px;
+        }
+        
+        .user-details {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .user-detail-item {
+            margin-bottom: 10px;
+        }
+        
+        .user-detail-label {
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+        
+        .user-detail-value {
+            color: white;
+        }
+        
+        .trading-style-section {
+            margin-bottom: 20px;
+        }
+        
+        .trading-style-section h4 {
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card">
             <div class="card-header">
+                <div></div> <!-- Empty div for spacing -->
                 <h2>FX BULLS PRO</h2>
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
             <div class="card-body">
                 <!-- Login Form -->
@@ -486,6 +593,55 @@
         </div>
     </div>
 
+    <!-- Hamburger Menu -->
+    <div class="side-menu" id="sideMenu">
+        <div class="side-menu-header">
+            <h3>USER PROFILE</h3>
+            <div class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="side-menu-content">
+            <div class="user-details">
+                <h4 style="color: var(--gold); margin-bottom: 15px;">ACCOUNT DETAILS</h4>
+                <div class="user-detail-item">
+                    <div class="user-detail-label">NAME</div>
+                    <div class="user-detail-value" id="menuUserName">-</div>
+                </div>
+                <div class="user-detail-item">
+                    <div class="user-detail-label">EMAIL</div>
+                    <div class="user-detail-value" id="menuUserEmail">-</div>
+                </div>
+                <div class="user-detail-item">
+                    <div class="user-detail-label">LICENSE KEY</div>
+                    <div class="user-detail-value" id="menuLicenseKey">-</div>
+                </div>
+            </div>
+            
+            <div class="trading-style-section">
+                <h4>CURRENT TRADING STYLE</h4>
+                <div class="user-detail-item">
+                    <div class="user-detail-value" id="menuTradingStyle">-</div>
+                </div>
+                
+                <h4 style="margin-top: 20px;">CHANGE TRADING STYLE</h4>
+                <div class="form-group">
+                    <select id="menuTradingStyleSelect">
+                        <option value="scalping">Scalping (1-15 min timeframe)</option>
+                        <option value="day">Day Trading (1-4 hour timeframe)</option>
+                        <option value="swing">Swing Trading (4 hour-daily timeframe)</option>
+                    </select>
+                </div>
+                <button id="updateTradingStyleBtn" class="success" style="margin-top: 10px;">
+                    UPDATE TRADING STYLE
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Overlay for menu -->
+    <div class="overlay" id="overlay"></div>
+
     <script>
         // Configuration
         const config = {
@@ -517,7 +673,7 @@
                     timeframe: "240"
                 }
             },
-            activationCodes: ["FXBULLS8.?", "TRADE96", "PROFX567", "BULLS80", "ACTIVATE02"]
+            activationCodes: ["FXBULLS8??", "TRADE96", "PROFX567", "BULLS80", "ACTIVATE02"]
         };
 
         // Generate 1000 unique license keys
@@ -578,7 +734,18 @@
             regName: document.getElementById("regName"),
             regEmail: document.getElementById("regEmail"),
             regPassword: document.getElementById("regPassword"),
-            regConfirmPassword: document.getElementById("regConfirmPassword")
+            regConfirmPassword: document.getElementById("regConfirmPassword"),
+            // Hamburger menu elements
+            hamburgerMenu: document.getElementById("hamburgerMenu"),
+            sideMenu: document.getElementById("sideMenu"),
+            closeMenu: document.getElementById("closeMenu"),
+            overlay: document.getElementById("overlay"),
+            menuUserName: document.getElementById("menuUserName"),
+            menuUserEmail: document.getElementById("menuUserEmail"),
+            menuLicenseKey: document.getElementById("menuLicenseKey"),
+            menuTradingStyle: document.getElementById("menuTradingStyle"),
+            menuTradingStyleSelect: document.getElementById("menuTradingStyleSelect"),
+            updateTradingStyleBtn: document.getElementById("updateTradingStyleBtn")
         };
 
         // Initialize the app
@@ -592,6 +759,12 @@
             elements.showRegister.addEventListener("click", showRegisterForm);
             elements.showLogin.addEventListener("click", showLoginForm);
             elements.goToLogin.addEventListener("click", showLoginForm);
+            
+            // Hamburger menu event listeners
+            elements.hamburgerMenu.addEventListener("click", openSideMenu);
+            elements.closeMenu.addEventListener("click", closeSideMenu);
+            elements.overlay.addEventListener("click", closeSideMenu);
+            elements.updateTradingStyleBtn.addEventListener("click", updateTradingStyle);
             
             // Check if already logged in
             if (localStorage.getItem("loggedIn") === "true") {
@@ -1240,6 +1413,86 @@
             elements.signalMessage.innerHTML = `
                 <div class="error-message">${message}</div>
             `;
+        }
+        
+        // Hamburger Menu Functions
+        function openSideMenu() {
+            if (localStorage.getItem("loggedIn") === "true") {
+                // Update menu with current user data
+                elements.menuUserName.textContent = localStorage.getItem("userName");
+                elements.menuUserEmail.textContent = localStorage.getItem("userEmail");
+                elements.menuLicenseKey.textContent = localStorage.getItem("licenseKey");
+                
+                // Update trading style display and selector
+                const tradingStyle = localStorage.getItem("userTradingStyle");
+                let tradingStyleText = "";
+                switch(tradingStyle) {
+                    case "scalping":
+                        tradingStyleText = "SCALPING (1-15 min timeframe)";
+                        break;
+                    case "day":
+                        tradingStyleText = "DAY TRADING (1-4 hour timeframe)";
+                        break;
+                    case "swing":
+                        tradingStyleText = "SWING TRADING (4 hour-daily timeframe)";
+                        break;
+                    default:
+                        tradingStyleText = tradingStyle.toUpperCase();
+                }
+                elements.menuTradingStyle.textContent = tradingStyleText;
+                elements.menuTradingStyleSelect.value = tradingStyle;
+                
+                // Show the menu
+                elements.sideMenu.classList.add("active");
+                elements.overlay.classList.add("active");
+            } else {
+                alert("Please login to access the menu");
+            }
+        }
+        
+        function closeSideMenu() {
+            elements.sideMenu.classList.remove("active");
+            elements.overlay.classList.remove("active");
+        }
+        
+        function updateTradingStyle() {
+            const newTradingStyle = elements.menuTradingStyleSelect.value;
+            const userEmail = localStorage.getItem("userEmail");
+            
+            // Update in user database
+            if (userDatabase[userEmail]) {
+                userDatabase[userEmail].tradingStyle = newTradingStyle;
+            }
+            
+            // Update in localStorage
+            localStorage.setItem("userTradingStyle", newTradingStyle);
+            
+            // Update display on dashboard
+            let tradingStyleText = "";
+            switch(newTradingStyle) {
+                case "scalping":
+                    tradingStyleText = "SCALPING (1-15 min timeframe)";
+                    break;
+                case "day":
+                    tradingStyleText = "DAY TRADING (1-4 hour timeframe)";
+                    break;
+                case "swing":
+                    tradingStyleText = "SWING TRADING (4 hour-daily timeframe)";
+                    break;
+                default:
+                    tradingStyleText = newTradingStyle.toUpperCase();
+            }
+            elements.userTradingStyleDisplay.textContent = tradingStyleText;
+            elements.menuTradingStyle.textContent = tradingStyleText;
+            
+            // Update chart with new timeframe
+            updateChart(newTradingStyle);
+            
+            // Show confirmation
+            alert("Trading style updated successfully!");
+            
+            // Close the menu
+            closeSideMenu();
         }
         
         // Initialize the app when DOM is loaded
